@@ -9,6 +9,7 @@ Asegúrate de tener instalados los siguientes software en tu máquina:
 * Python 3.x (recomendado Python 3.8 o superior)
 * pip (gestor de paquetes de Python)
 * git (para clonar el repositorio)
+* MacOS/Linux o descargar terminal en VSC Ubuntu (WSL).Mas informacion [Aqui](https://learn.microsoft.com/es-es/windows/wsl/tutorials/wsl-vscode).
 
 ## Pasos para Configurar el Entornor
 
@@ -32,11 +33,6 @@ python -m venv env
 ```
 
 ### 3. Activar el Entorno Virtual
-En Windows:
-```
-.\env\Scripts\activate
-```
-En MacOS/Linux:
 ```
 source env/bin/activate
 ```
