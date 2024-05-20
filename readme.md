@@ -1,7 +1,5 @@
 # Instrucciones para Configurar y Ejecutar el Proyecto To Do App Django
 
-Editor Markdown es un editor online que se ejecuta en tu navegador y que funciona tanto con tus archivos locales como con varios servicios de almacenamiento cloud.
-
 ## Prerrequisitos
 
 Asegúrate de tener instalados los siguientes software en tu máquina:
