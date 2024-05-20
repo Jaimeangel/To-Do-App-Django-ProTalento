@@ -17,13 +17,18 @@ Primero, clona el repositorio de tu proyecto desde GitHub (o cualquier otro sist
 
 ```
 git clone https://github.com/Jaimeangel/To-Do-App-Django-ProTalento.git
+cd Do-App-Django-ProTalento
 ```
 
 ### 2. Crear un Entorno Virtual
 Crea un entorno virtual para aislar las dependencias del proyecto. Esto evita conflictos entre paquetes de diferentes proyectos:
 
 ```
-python3 -m venv env
+pip install virtualenv
+```
+
+```
+python -m venv env
 ```
 
 ### 3. Activar el Entorno Virtual
