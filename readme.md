@@ -92,3 +92,35 @@ Con estos pasos, deberías poder configurar y ejecutar tu proyecto Django sin pr
 Sigueme en mis redes sociales
 * [LinkedIn](https://www.linkedin.com/in/jaimeangeldev/).
 * [GitHub](https://github.com/Jaimeangel/)
+
+
+# Descripción de la estructura del proyecto y las decisiones de diseño importantes.
+
+### Estructura de Archivos y Carpetas
+
+El proyecto Django sigue una estructura de carpetas estándar, pero con algunas modificaciones para integrar Bootstrap 5 y organizar los archivos de manera efectiva.
+
+- **Directorio del Proyecto**: Este es el directorio principal del proyecto Django.
+    - **`manage.py`**: Script para administrar el proyecto Django.
+    - **Directorio de la Aplicación Principal**: Este directorio contiene la configuración principal del proyecto Django.
+        - **`settings.py`**: Archivo de configuración principal donde se definen todas las configuraciones del proyecto.
+        - **`urls.py`**: Archivo de configuración de las URL del proyecto.
+        - **`wsgi.py`**: Archivo de entrada para el servidor WSGI (Web Server Gateway Interface).
+        - **`asgi.py`**: Archivo de entrada para el servidor ASGI (Asynchronous Server Gateway Interface) para aplicaciones asincrónicas.
+    - **Directorio de Aplicaciones**: Este directorio contiene las aplicaciones Django individuales.
+    - **Directorio de Plantillas (Templates)**: Aquí se almacenan los archivos HTML de las plantillas de la aplicación.
+    - **Directorio de Archivos Estáticos**: Este directorio almacena archivos estáticos como CSS, JavaScript, imágenes, etc.
+        - **`static/`**: Carpeta principal para archivos estáticos.
+            - **`css/`**: Carpeta para archivos CSS personalizados.
+            - **`js/`**: Carpeta para archivos JavaScript personalizados.
+            - **`img/`**: Carpeta para imágenes y otros recursos visuales.
+
+### Decisiones de Diseño Importantes
+
+1. **Uso de Bootstrap 5**: Se eligió Bootstrap 5 como el framework de diseño para proporcionar una interfaz de usuario moderna, receptiva y fácil de usar. Bootstrap 5 ofrece una amplia gama de componentes y estilos predefinidos que aceleran el proceso de desarrollo y garantizan una apariencia consistente en todo el sitio web.
+
+2. **Integración con Django**: Se aprovechó la capacidad de Django para gestionar plantillas y archivos estáticos de manera eficiente. Se utilizó la configuración adecuada en `settings.py` para establecer las rutas de los archivos estáticos y de las plantillas, asegurando así una integración fluida con Bootstrap 5.
+
+3. **Organización de Archivos Estáticos**: Se organizó cuidadosamente la estructura de archivos estáticos para mantener un código limpio y modular. Los archivos CSS personalizados se ubicaron en su propia carpeta dentro del directorio estático para facilitar su mantenimiento y extensión.
+
+4. **Plantillas Reutilizables**: Se crearon plantillas HTML reutilizables para componentes comunes como encabezados, pies de página, barras de navegación, etc. Esto ayuda a mantener la consistencia en todo el sitio web y a facilitar la modificación y actualización futuras.
