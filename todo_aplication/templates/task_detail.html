@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link
+    href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+{% endblock  %}
+
+{% block content %}
+    <div class="py-5 container-sm">
+        <a href="{% url 'home' %}">
+            <button type="button" class="btn btn-primary mb-3 d-flex flex-row align-items-center gap-3"><i class='bx bxs-home'></i> Regresar</button>
+        </a>
+        <section class="border shadow-sm d-flex flex-wrap justify-content-center gap-3 bg-transparent w-100 h-100 mb-3 p-3 overflow-auto">
+        <!-- Task card -->
+        <div class="w-100 w-md-75 d-flex flex-column bg-white rounded-3 p-3">
+            <!-- Top -->
+            <div class="d-flex justify-content-between">
+                <!-- Left: Title and Description -->
+                <div>
+                    {% if task.completed_task %}
+                        <h1 class="text-success font-weight-bold fs-3 text-decoration-line-through">
+                            {{ task.task }}
+                        </h1>
+                    {% else %}
+                        <h1 class="text-primary font-weight-bold fs-3">
+                            {{ task.task }}
+                        </h1>
+                    {% endif %}
+                    <h2 class="text-dark font-weight-bold fs-5 d-flex flex-row align-items-center gap-3">
+                        Estatus:
+                        {% if task.completed_task %}
+                            <span class="font-weight-medium text-success d-flex flex-row align-items-center gap-3">Completa <i class="bx bxs-badge-check"></i></span>
+                        {% else %}
+                            <span class="font-weight-medium text-danger d-flex flex-row align-items-center gap-3">Incompleta <i class='bx bxs-x-circle'></i></span>
+                        {% endif %}
+                    </h2>
+                    <div class="d-flex flex-row align-items-center gap-3">
+                        <h5 class="text-muted font-bold fst-italic">
+                            Description:
+                        </h5>
+                        <p class="fs-3 text-dark font-bold">
+                            {{ task.description }}
+                        </p>
+                    </div>
+                </div>
+                <!-- Right: Toggle complete mode -->
+                <div class="d-flex flex-column gap-3">
+                    {% if task.completed_task %}
+                        <a href="{% url 'toogle_task' task.id %}" class="btn btn-success d-flex align-items-center gap-2 text-white fw-semibold">
+                            <i class="bx bxs-check-circle bx-sm"></i> Completado
+                        </a>
+                    {% else %}
+                        <a href="{% url 'toogle_task' task.id %}" class="btn btn-primary d-flex align-items-center gap-2 text-white fw-semibold">
+                            <i class="bx bx-check-circle bx-sm"></i> Completar
+                        </a>
+                    {% endif %}
+                    <a href="{% url 'edit_task' task.id %}" class="btn btn-warning d-flex align-items-center gap-2 text-dark fw-semibold">
+                        <i class='bx bx-edit bx-sm text-dark'></i> Editar
+                    </a>
+                </div>
+            </div>
+            <!-- Line -->
+            <hr class="my-2" />
+            <!-- Bottom: Time and Date | Delete -->
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="text-dark font-weight-bold">
+                    Creada: {{ task.date_created }}
+                </h5>
+                <a href="{% url 'delete_task' task.id %}" class="btn btn-danger d-flex align-items-center gap-2 text-white fw-semibold">
+                    <i class="bx bxs-trash bx-sm"></i> Eliminar
+                </a>
+            </div>
+        </div>
+        </section>
+        
+        <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    </div>
+{% endblock  %}

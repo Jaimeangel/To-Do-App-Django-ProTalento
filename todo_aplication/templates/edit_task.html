@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+  <link
+    href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+{% endblock  %}
+
+{% block content %}
+    <form method="post" class="container-sm shadow-sm p-3 mb-5 bg-body rounded mt-5 border">
+        {% csrf_token %}
+        {{form | crispy}}
+        <button type="submit" class="btn btn-success">
+            Editar tarea
+        </button>
+        <a href="{% url 'detail-task' task.id %}">
+          <button class="btn btn-primary">
+            Cancelar
+          </button>
+        </a>
+
+        <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    </form>
+{% endblock  %}
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Box Icons CSS -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../static/styles.css" />
+    <title>Quick ToDo</title>
+  </head>
+  <body
+    class="bg-[#cfcfcf] flex flex-col items-center justify-center gap-4 h-screen"
+  >
+    <!-- header -->
+    <header
+      class="bg-white shadow-lg w-10/12 h-auto rounded-3xl flex flex-col sm:flex-row justify-between items-center p-5 m-7 md:w-3/6"
+    >
+      <h1 class="text-blue-600 font-bold text-[40px]">Quick ToDo</h1>
+      <a
+        class="bg-blue-600 py-2 px-4 text-white font-semibold rounded-2xl text-lg mt-4 flex items-center gap-2"
+        href="/"
+      >
+        <i class="bx bxs-left-arrow-circle bx-sm"></i> Go Back
+      </a>
+    </header>
+
+    <!-- Tasks -->
+    <section
+      class="flex flex-col items-center gap-3 bg-[#fff0] w-10/12 md:w-11/12 h-full mb-3 rounded-2xl p-3 overflow-y-auto scrollbar-hide"
+    >
+      <!-- Task card -->
+      <h1 class="text-gray-500 font-bold text-[20px]">Editar</h1>
+      <form method="post" class="w-10/12 md:w-3/6 shadow-md bg-white rounded-2xl p-4">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <div class="flex items-center justify-center gap-4">
+            <button 
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
+                type="submit"
+            >
+                Guardar cambios
+            </button>
+            <a
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
+                href="{% url 'detail-task' task.id %}"
+            >
+                Cancelar
+            </a>
+        </div>
+      </form>
+    </section>
+
+    <!-- Box Icons -->
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  </body>
+</html>

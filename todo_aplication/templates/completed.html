@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link
+    href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+{% endblock  %}
+
+{% block content %}
+  <div class="py-5 container-sm">
+    <!-- Navigation Bar -->
+    <nav class="bg-light container-sm shadow-sm p-2 mb-5 rounded-pill h-auto border  d-flex justify-content-around mx-auto">
+      <a href="/" class="text-decoration-none text-primary font-weight-bold py-1 px-3 d-flex align-items-center gap-1">
+        <span class="font-weight-medium text-primary d-flex flex-row align-items-center gap-3">Tasks <i class="bx bxs-category"></i></span>
+      </a>
+      <span class="text-secondary">|</span>
+      <a href="{% url 'completed-task' %}" class="text-decoration-none text-secondary font-weight-bold py-1 px-3 d-flex align-items-center gap-1">
+        <span class="font-weight-medium text-success d-flex flex-row align-items-center gap-3">Completa <i class="bx bxs-badge-check"></i></span>
+      </a>
+      <span class="text-secondary">|</span>
+      <a href="{% url 'incompleted-task' %}" class="text-decoration-none text-secondary font-weight-bold py-1 px-3 d-flex align-items-center gap-1">
+        <span class="font-weight-medium text-danger d-flex flex-row align-items-center gap-3">Incompleta <i class='bx bxs-x-circle'></i></span>
+      </a>
+      <span class="text-secondary">|</span>
+      <a href="{% url 'add-task' %}" class="text-decoration-none">
+        <button type="button" class=" btn btn-success rounded-pill  py-1 px-3 d-flex align-items-center gap-1">
+          <i class='bx bxs-plus-circle'></i> agregar
+        </button>
+      </a>
+    </nav>
+
+    <!-- Tasks -->
+    <section class="row row-cols-1 gap-3">
+      <!-- Task card -->
+      {% for task in tasks %}
+        <div class="col shadow-sm bg-white border rounded-3">
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h5 class="card-title text-success font-bold ">
+                          <del> {{ task.task | slice:":30" }}</del>
+                        </h5>
+                        <p class="card-text text-dark fw-bold">
+                            {{ task.description | slice:":35" }}
+                        </p>
+                    </div>
+                    <div class="d-flex flex-column gap-1">
+                        <a href="{% url 'toogle_task' task.id %}" class="btn btn-success d-flex align-items-center gap-2 text-white fw-semibold">
+                            <i class="bx bxs-check-circle bx-sm"></i> Completado
+                        </a>
+                        <a href="{% url 'detail-task' task.id %}" class="btn btn-warning d-flex align-items-center gap-2 text-dark fw-semibold">
+                            <i class='bx bx-link-external bx-sm'></i> Ver tarea
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <small class="text-dark fw-bold">{{task.date_created}}</small>
+                    <a href="{% url 'delete_task' task.id %}" class="btn btn-danger d-flex align-items-center gap-2 text-white fw-semibold">
+                        <i class="bx bxs-trash bx-sm"></i> Eliminar
+                    </a>
+                </div>
+            </div>
+        </div>
+      {% endfor %}
+    </section>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  </div>
+{% endblock  %}

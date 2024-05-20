@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link
+    href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+{% endblock  %}
+
+{% block content %}
+  <div class="py-5 container-sm">
+    <section class="border shadow-sm d-flex flex-wrap justify-content-center gap-3 bg-transparent w-100 h-100 mb-3 p-3 overflow-auto">
+      <!-- Task card -->
+      <div class="w-100 shadow-md w-md-75 d-flex flex-column bg-white rounded-3 p-3">
+          <!-- Top -->
+          <div class="d-flex flex-column justify-content-between">
+              <!-- Left: Title and Description -->
+              {% if task %}
+              <h1 class="text-dark fw-bold fs-3 text-center">
+                  Confirmar eliminación
+              </h1>
+              <br />
+              <h2 class="text-dark fw-semibold fs-5 text-center">
+                  ¿Estás seguro de eliminar la tarea "
+                  <span class="text-success fw-semibold fs-5 text-decoration-underline">{{ task.task }}</span>" ? <br />Esta acción es irreversible 
+              </h2>
+              {% endif %}
+          </div>
+          <!-- Line -->
+          <hr class="my-2" />
+          <!-- Bottom: Time and Date | Delete -->
+          <div class="d-flex justify-content-around">
+              {% if task %}
+              <a href="/" class="btn btn-primary d-flex align-items-center gap-2 text-white fw-semibold">
+                  <i class="bx bxs-left-arrow-circle"></i> Regresar
+              </a>
+              <a href="{% url 'remove_task' task.id %}" class="btn btn-danger d-flex align-items-center gap-2 text-white fw-semibold">
+                  <i class="bx bxs-trash"></i> Sí, Eliminar
+              </a>
+              {% endif %}
+          </div>
+      </div>
+    </section>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  </div>
+{% endblock  %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Box Icons CSS -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../static/styles.css" />
+    <title>Quick ToDo</title>
+  </head>
+  <body
+    class="bg-[#cfcfcf] flex flex-col items-center justify-center gap-4 h-screen"
+  >
+    <!-- header -->
+    <header
+      class="bg-white shadow-lg w-10/12 h-auto rounded-3xl flex flex-col sm:flex-row justify-between items-center p-5 m-7 md:w-3/6"
+    >
+      <h1 class="text-blue-600 font-bold text-[40px]">Quick ToDo</h1>
+      <a
+        class="bg-blue-600 py-2 px-4 text-white font-semibold rounded-2xl text-lg mt-4 flex items-center gap-2"
+        href="./index.html"
+      >
+        <i class="bx bxs-home bx-sm"></i> Go to Home
+      </a>
+    </header>
+
+    <!-- Tasks -->
+    <section
+      class="flex flex-1 flex-wrap justify-center gap-3 bg-[#fff0] w-10/12 md:w-11/12 h-full mb-3 rounded-2xl p-3 overflow-y-auto scrollbar-hide"
+    >
+      <!-- Task card -->
+      <div
+        class="w-full shadow-md md:w-4/6 flex flex-col bg-white h-fit rounded-xl p-3"
+      >
+        <!-- Top -->
+        <div class="flex flex-col justify-between">
+          <!-- Left: Title and Description -->
+
+          <h1 class="text-gray-500 font-bold text-2xl underline text-center">
+            Confirmar eliminacion
+          </h1>
+          <br />
+          <h2 class="text-gray-500 font-semibold text-lg text-center">
+            ¿Estas seguro de eliminar la tarea "
+            <span class="text-green-500 font-semibold text-lg">{{task.task}}</span>" ? <br />Esta acción es irreversible 
+          </h2>
+        </div>
+        <!-- Line -->
+        <hr class="border-t border-gray-200 my-2" />
+        <!-- Bottom: Time and Date | Delete -->
+        <div class="flex flex-row justify-around">
+          <a
+            href="/"
+            class="py-1 px-2 bg-blue-600 rounded-xl flex items-center gap-1 text-white font-semibold"
+            ><i class="bx bxs-left-arrow-circle"></i> Regresar</a
+          >
+
+          <a
+            href="{% url 'remove_task' task.id %}"
+            class="py-1 px-2 bg-red-600 rounded-xl flex items-center gap-1 text-white font-semibold"
+            ><i class="bx bxs-trash"></i> Si, Eliminar</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Box Icons -->
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  </body>
+</html>
