@@ -16,8 +16,7 @@ Asegúrate de tener instalados los siguientes software en tu máquina:
 Primero, clona el repositorio de tu proyecto desde GitHub (o cualquier otro sistema de control de versiones que estés usando ):
 
 ```
-git clone https://github.com/tu_usuario/tu_proyecto.git
-cd tu_proyecto
+git clone https://github.com/Jaimeangel/To-Do-App-Django-ProTalento.git
 ```
 
 ### 2. Crear un Entorno Virtual
